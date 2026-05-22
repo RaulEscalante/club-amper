@@ -10,7 +10,7 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 
 function Home() {
-    const API_URL = "http://localhost/club-amper-api/backend";
+    const API_URL = "https://club-amper-api-production.up.railway.app";
     const usuario = JSON.parse(localStorage.getItem("usuario"));
 
     const [productos, setProductos] = useState([]);
