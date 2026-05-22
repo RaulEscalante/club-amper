@@ -1,4 +1,4 @@
-const API_URL_LOCAL = "http://localhost/club-amper-api/backend/api";
+const API_URL_LOCAL = "https://club-amper-api-production.up.railway.app";
 export const loginUsuario = async (data) => {
 
   try {

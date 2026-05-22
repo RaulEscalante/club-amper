@@ -1,5 +1,5 @@
 const API_URL = "http://192.168.1.88/club-amper-api/backend/api";
-const API_URL_LOCAL = "http://localhost/club-amper-api/backend/api";
+const API_URL_LOCAL = "https://club-amper-api-production.up.railway.app";
 
 export const obtenerProductos = async () => {
 
