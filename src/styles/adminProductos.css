@@ -1,0 +1,188 @@
+.admin-productos-container {
+padding: 30px;
+  max-width: 1300px;
+  margin: auto;
+}
+.admin-productos-header {
+  background: white;
+  padding: 20px 30px;
+  border-radius: 24px;
+  margin-bottom: 30px;
+  box-shadow:
+    0 10px 30px rgba(0,0,0,0.06);
+}
+.top-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 25px;
+  flex-wrap: wrap;
+}
+
+.admin-productos-header h2 {
+  font-size: 32px;
+  font-weight: 800;
+  color: #1e1e1e;
+}
+
+.admin-productos-header p {
+  margin-top: 8px;
+  color: #777;
+  font-size: 15px;
+}
+
+.btn-agregar-producto {
+  background: linear-gradient(135deg, #bb1818, #e53935);
+  color: white;
+  border: none;
+  padding: 12px 18px;
+  border-radius: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.25s ease;
+  box-shadow: 0 8px 18px rgba(229, 57, 53, 0.25);
+}
+
+.btn-agregar-producto:hover {
+  transform: translateY(-2px);
+}
+
+.table-container {
+  background: white;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+}
+
+.productos-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.productos-table thead {
+  background:
+    linear-gradient(
+      135deg,
+      #fafafa,
+      #f3f3f3
+    );
+}
+.productos-table td,
+.productos-table th {
+  padding: 20px 18px;
+}
+.productos-table th {
+  text-align: left;
+  padding: 16px;
+  font-size: 14px;
+  color: #555;
+}
+
+.productos-table td {
+  padding: 16px;
+  border-top: 1px solid #f1f1f1;
+  vertical-align: middle;
+}
+
+.productos-table tbody tr {
+  transition: 0.2s ease;
+}
+
+.productos-table tbody tr:hover {
+  background:
+    rgba(187,24,24,0.03);
+}
+
+.producto-nombre-cell {
+  font-weight: 600;
+  color: #222;
+}
+
+.estado-producto {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.estado-producto.activo {
+  background: rgba(52, 199, 89, 0.15);
+  color: #1e8e3e;
+}
+
+.estado-producto.inactivo {
+  background: rgba(255, 59, 48, 0.12);
+  color: #d93025;
+}
+
+.acciones-producto {
+  display: flex;
+  gap: 10px;
+}
+
+.btn-editar-producto,
+.btn-desactivar-producto,
+.btn-activar-producto {
+  border: none;
+  padding: 10px 14px;
+  border-radius: 12px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.25s ease;
+  color: white;
+}
+
+.btn-editar-producto {
+  background: linear-gradient(
+    135deg,
+    #4f46e5,
+    #6366f1
+  );
+}
+
+.btn-editar-producto:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 18px rgba(99,102,241,.25);
+}
+.btn-desactivar-producto {
+  background: linear-gradient(
+    135deg,
+    #dc2626,
+    #ef4444
+  );
+}
+
+.btn-desactivar-producto:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 18px rgba(239,68,68,.25);
+}
+
+.btn-activar-producto {
+  background: linear-gradient(
+    135deg,
+    #16a34a,
+    #22c55e
+  );
+}
+
+.btn-activar-producto:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 18px rgba(34,197,94,.25);
+}
+
+@media (max-width: 992px) {
+
+  .table-container {
+    overflow-x: auto;
+  }
+
+  .productos-table {
+    min-width: 900px;
+  }
+
+}

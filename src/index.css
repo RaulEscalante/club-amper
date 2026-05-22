@@ -1,0 +1,489 @@
+@font-face {
+  font-family: 'Akira Expanded';
+  src: url('./assets/fonts/AkiraExpanded.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Poppins';
+  src: url('./assets/fonts/poppins/Poppins-Black.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+html {
+  overflow-y: scroll;
+}
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; 
+}
+
+body {
+  padding-top: 40px;
+  background:
+    radial-gradient(circle at top left, #fff5f5 0%, transparent 30%),
+    radial-gradient(circle at bottom right, #ffeaea 0%, transparent 30%),
+    #f7f8fa;
+  min-height: 100vh;
+  overflow-x: hidden;
+  font-family: 'Poppins', sans-serif;
+}
+.pasos {
+  background: white;
+  border-radius: 28px;
+  padding: 25px 25px;
+  transition: 0.25s;
+  box-shadow:
+    0 10px 30px rgba(0,0,0,0.06);
+  border: 1px solid #eee;
+}
+
+.pasos:hover {
+  transform: translateY(-8px);
+  box-shadow:
+    0 18px 40px rgba(0,0,0,0.10);
+}
+
+.pasos h3 {
+  width: 55px;
+  height: 55px;
+  background: #bb1818;
+  color: white;
+  margin: 20px auto;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  font-weight: 700;
+}
+.pasos p {
+  color: #666;
+}
+.pasos img{
+  width: 100px;
+  height: auto;
+  margin-bottom: 15px;
+}
+.campospas{
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+}
+
+footer {
+  background-color: #bb1818;
+}
+.button-ver-mas{
+  width: 150px;
+}
+
+.img-cardpuntos:hover {
+  box-shadow:
+    0 0 20px rgba(212,175,55,0.55),
+    0 0 35px rgba(212,175,55,0.30);
+
+  transform: scale(1.05);
+  transition: 0.85s;
+}
+.hero-banner {
+  width: 100%;
+  max-width: 550px;
+  height: auto;
+  border-radius: 25px;
+  object-fit: cover;
+}
+
+.beneficio-card img{
+  width: auto;
+  height: 100px;
+  margin-bottom: 20px;
+}
+.textop{
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+}
+/* =========================================
+   HERO
+========================================= */
+
+.hero-section {
+  position: relative;
+  padding: 90px 0;
+  overflow: hidden;
+
+  background:
+    linear-gradient(
+      135deg,
+      #111111 0%,
+      #1c1c1c 40%,
+      #bb1818 100%
+    );
+
+  color: white;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+
+  background:
+    radial-gradient(
+      circle at top right,
+      rgba(255,255,255,0.08),
+      transparent 40%
+    );
+}
+
+.hero-container {
+  position: relative;
+  z-index: 2;
+}
+
+.hero-left {
+  padding-right: 40px;
+}
+
+.hero-badge {
+  display: inline-block;
+
+  background: rgba(255,255,255,0.12);
+
+  border: 1px solid rgba(255,255,255,0.15);
+
+  padding: 8px 16px;
+
+  border-radius: 999px;
+
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 1px;
+
+  margin-bottom: 20px;
+}
+
+.hero-title {
+  font-size: 58px;
+  font-weight: 800;
+  line-height: 1.1;
+
+  margin-bottom: 25px;
+}
+
+.hero-title span {
+  color: #ffd5d5;
+}
+
+.hero-description {
+  font-size: 18px;
+  line-height: 1.8;
+
+  color: rgba(255,255,255,0.85);
+
+  margin-bottom: 35px;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.btn-hero-primary {
+  background: white;
+  color: #bb1818;
+
+  padding: 14px 28px;
+
+  border-radius: 12px;
+
+  font-weight: 700;
+
+  text-decoration: none;
+
+  transition: 0.2s;
+}
+
+.btn-hero-primary:hover {
+  transform: translateY(-2px);
+  background: #f3f3f3;
+}
+
+.btn-hero-secondary {
+  border: 1px solid rgba(255,255,255,0.25);
+
+  color: white;
+
+  padding: 14px 28px;
+
+  border-radius: 12px;
+
+  text-decoration: none;
+
+  transition: 0.2s;
+}
+
+.btn-hero-secondary:hover {
+  background: rgba(255,255,255,0.08);
+}
+
+.hero-image-card {
+  background: rgba(255,255,255,0.08);
+
+  padding: 15px;
+
+  border-radius: 24px;
+
+  backdrop-filter: blur(8px);
+
+  box-shadow:
+    0 20px 60px rgba(0,0,0,0.25);
+}
+
+.hero-banner {
+  width: 100%;
+  border-radius: 18px;
+  object-fit: cover;
+}
+.beneficio-card {
+  background: white;
+
+  border-radius: 24px;
+
+  padding: 35px 25px;
+
+  text-align: center;
+
+  min-height: 250px;
+
+  transition: 0.25s;
+
+  border: 1px solid #eee;
+
+  box-shadow:
+    0 10px 30px rgba(0,0,0,0.05);
+}
+
+.beneficio-card:hover {
+  transform: translateY(-8px);
+
+  box-shadow:
+    0 18px 40px rgba(0,0,0,0.12);
+}
+
+.icon-ben {
+  width: 80px;
+  margin-bottom: 20px;
+}
+
+.textop {
+  font-size: 15px;
+  color: #555;
+  line-height: 1.7;
+}
+.producto-card {
+  border-radius: 24px;
+
+  overflow: hidden;
+
+  border: 1px solid #eee;
+
+  transition: 0.25s;
+
+  background: white;
+
+  box-shadow:
+    0 10px 25px rgba(0,0,0,0.05);
+}
+
+.producto-card:hover {
+  transform: translateY(-8px);
+
+  box-shadow:
+    0 18px 40px rgba(0,0,0,0.12);
+}
+
+.producto-img-container {
+  background: #f8f8f8;
+  padding: 20px;
+}
+
+.producto-img {
+  height: 220px;
+  object-fit: contain;
+}
+
+@media (max-width: 768px) {
+
+  .hero-title {
+    font-size: 40px;
+  }
+
+  .hero-left {
+    padding-right: 0;
+    margin-bottom: 40px;
+  }
+
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+
+}
+.btn-ver-mas {
+  width: 180px;
+  background: #bb1818;
+  color: white;
+  padding: 14px 22px;
+  border-radius: 14px;
+  text-align: center;
+  text-decoration: none;
+  font-weight: 600;
+  transition: 0.25s;
+}
+section {
+  padding-top: 80px !important;
+  padding-bottom: 80px !important;
+}
+.btn-ver-mas:hover {
+  background: #981414;
+  transform: translateY(-2px);
+}
+.cta-section {
+  background:
+    linear-gradient(
+      135deg,
+      #111,
+      #bb1818
+    );
+
+  color: white;
+
+  border-radius: 40px;
+
+  margin: 80px auto;
+
+  width: 90%;
+
+  padding: 90px 20px;
+}
+
+.cta-section h2 {
+  font-size: 42px;
+  margin-bottom: 20px;
+}
+
+.cta-button {
+  display: inline-block;
+
+  margin-top: 25px;
+
+  background: white;
+  color: #bb1818;
+
+  padding: 16px 32px;
+
+  border-radius: 14px;
+
+  font-weight: 700;
+
+  text-decoration: none;
+}
+
+/* =========================================
+   FOOTER
+========================================= */
+
+.footer-club {
+  margin-top: 80px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #121212 0%,
+      #1f1f1f 50%,
+      #bb1818 100%
+    );
+
+  color: white;
+
+  padding-top: 60px;
+
+  border-top-left-radius: 40px;
+  border-top-right-radius: 40px;
+
+  overflow: hidden;
+}
+
+.footer-top {
+  display: flex;
+  justify-content: space-between;
+  gap: 60px;
+
+  padding-bottom: 40px;
+
+  flex-wrap: wrap;
+}
+
+.footer-brand {
+  max-width: 350px;
+}
+
+.footer-logo {
+  width: 140px;
+  margin-bottom: 18px;
+}
+
+.footer-brand p {
+  color: rgba(255,255,255,0.75);
+  line-height: 1.8;
+  font-size: 15px;
+}
+
+.footer-links {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.footer-links h5 {
+  font-size: 16px;
+  margin-bottom: 10px;
+  color: #fff;
+}
+
+.footer-links a {
+  color: rgba(255,255,255,0.72);
+  text-decoration: none;
+
+  transition: 0.2s;
+}
+
+.footer-links a:hover {
+  color: white;
+  transform: translateX(4px);
+}
+
+.footer-bottom {
+  border-top: 1px solid rgba(255,255,255,0.12);
+
+  padding: 20px 0;
+
+  text-align: center;
+
+  color: rgba(255,255,255,0.6);
+
+  font-size: 14px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+
+  .footer-top {
+    flex-direction: column;
+    gap: 40px;
+  }
+
+}

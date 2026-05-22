@@ -1,0 +1,263 @@
+/* =========================
+   CONTENEDOR GENERAL
+========================= */
+
+.admin-canjes-container {
+  padding: 30px;
+  max-width: 1300px;
+  margin: auto;
+}
+
+/* =========================
+   HEADER
+========================= */
+
+.admin-header-canjes {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: white;
+  padding: 20px 30px;
+  border-radius: 24px;
+  margin-bottom: 30px;
+  box-shadow:
+    0 10px 30px rgba(0,0,0,0.06);
+}
+
+.admin-header-canjes h2 {
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 5px;
+  color: #222;
+}
+
+.admin-header-canjes p {
+  color: #777;
+  margin: 0;
+}
+
+/* BOX PENDIENTES */
+
+.pending-box {
+  background: linear-gradient(135deg, #bb1818, #ff4b4b);
+  color: white;
+  padding: 14px 24px;
+  border-radius: 14px;
+  font-size: 15px;
+  font-weight: 600;
+  box-shadow: 0 10px 25px rgba(187, 24, 24, 0.25);
+}
+
+/* =========================
+   TABLA
+========================= */
+
+.table-container {
+  background: white;
+  border-radius: 24px;
+  overflow: hidden;
+  border: 1px solid #f0f0f0;
+  box-shadow:
+    0 10px 35px rgba(0,0,0,0.05);
+}
+/* TABLA */
+
+.canjes-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+/* HEAD */
+
+.canjes-table thead {
+  background: #f8f9fb;
+}
+
+.canjes-table th {
+  padding: 18px;
+  text-align: left;
+  font-size: 14px;
+  color: #555;
+  font-weight: 700;
+  border-bottom: 1px solid #eee;
+}
+
+/* BODY */
+
+.canjes-table td {
+  padding: 18px;
+  border-bottom: 1px solid #f1f1f1;
+  font-size: 14px;
+  color: #333;
+  vertical-align: middle;
+}
+
+/* HOVER */
+
+.canjes-table tbody tr {
+  transition: all 0.2s ease;
+}
+
+.canjes-table tbody tr:hover {
+  background: #fafafa;
+}
+
+/* =========================
+   ESTADOS
+========================= */
+
+.estado {
+  padding: 7px 14px;
+  border-radius: 30px;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  display: inline-block;
+}
+
+/* PENDIENTE */
+
+.estado.pendiente {
+  background: rgba(255, 193, 7, 0.15);
+  color: #d18d00;
+}
+
+/* ENTREGADO */
+
+.estado.entregado {
+  background: rgba(25, 135, 84, 0.15);
+  color: #198754;
+}
+
+/* CANCELADO */
+
+.estado.cancelado {
+  background: rgba(220, 53, 69, 0.15);
+  color: #dc3545;
+}
+
+/* =========================
+   BOTONES
+========================= */
+
+.btn-entregado {
+  background: linear-gradient(135deg, #bb1818, #e53935);
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 12px rgba(229, 57, 53, 0.25);
+}
+
+.btn-entregado:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 18px rgba(229, 57, 53, 0.35);
+}
+
+/* CANCELAR */
+
+.btn-cancelar {
+  background: #f1f3f5;
+  color: #555;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.btn-cancelar:hover {
+  background: #e4e6eb;
+}
+.btn-guardar {
+  background: linear-gradient(135deg, #1e8e3e, #34c759);
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  margin-right: 8px;
+  box-shadow: 0 4px 12px rgba(52, 199, 89, 0.25);
+}
+
+.btn-guardar:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 18px rgba(52, 199, 89, 0.35);
+}
+
+.btn-guardar:active {
+  transform: scale(0.98);
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 992px) {
+
+  .table-container {
+    overflow-x: auto;
+  }
+
+  .canjes-table {
+    min-width: 900px;
+  }
+
+}
+
+@media (max-width: 768px) {
+
+  .admin-header-canjes {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+
+  .admin-header-canjes h2 {
+    font-size: 26px;
+  }
+
+}
+.busqueda-container {
+  margin-bottom: 25px;
+}
+
+.input-busqueda {
+  width: 100%;
+  max-width: 400px;
+
+  height: 52px;
+
+  padding: 0 18px;
+
+  border-radius: 16px;
+
+  border: 1px solid #e5e5e5;
+
+  background: white;
+
+  font-size: 14px;
+
+  transition: 0.25s ease;
+
+  box-shadow:
+    0 4px 15px rgba(0,0,0,0.04);
+}
+
+.input-busqueda:focus {
+  outline: none;
+
+  border-color: #bb1818;
+
+  box-shadow:
+    0 0 0 4px rgba(187,24,24,0.10);
+}
