@@ -10,7 +10,7 @@ export const obtenerProductos = async () => {
         );
 
         const response = await fetch(
-            `${API_URL_LOCAL}/producto/listar.php`,
+            `${API_URL_LOCAL}/api/producto/listar.php`,
             {
                 headers: {
                     "Content-Type": "application/json",
@@ -40,7 +40,7 @@ export const crearProducto = async (producto) => {
     try {
         const usuario = JSON.parse(localStorage.getItem("usuario"));
 
-        const response = await fetch(`${API_URL_LOCAL}/producto/crear.php`, {
+        const response = await fetch(`${API_URL_LOCAL}/api/producto/crear.php`, {
             method: "POST",
             headers: {
                 "usuario": JSON.stringify(usuario)
@@ -62,7 +62,7 @@ export const editarProducto = async (producto) => {
         const usuario = JSON.parse(localStorage.getItem("usuario"));
 
         const response = await fetch(
-            `${API_URL_LOCAL}/producto/editar.php`,
+            `${API_URL_LOCAL}/api/producto/editar.php`,
             {
                 method: "POST",
                 headers: {
@@ -89,7 +89,7 @@ export const eliminarProducto = async (id) => {
         const usuario = JSON.parse(localStorage.getItem("usuario"));
 
         const response = await fetch(
-            `${API_URL_LOCAL}/producto/desactivar.php`,
+            `${API_URL_LOCAL}/api/producto/desactivar.php`,
             {
                 method: "POST",
                 headers: {
@@ -114,7 +114,7 @@ export const reactivarProducto = async (id) => {
         );
 
         const response = await fetch(
-            `${API_URL_LOCAL}/producto/reactivar.php`,
+            `${API_URL_LOCAL}/api/producto/reactivar.php`,
             {
                 method: "POST",
                 headers: {

@@ -6,7 +6,7 @@ export const canjearProducto = async (data) => {
     const usuario = JSON.parse(localStorage.getItem("usuario"));
 
     const response = await fetch(
-      `${API_URL_LOCAL}/canje/crear.php`,
+      `${API_URL_LOCAL}/api/canje/crear.php`,
       {
         method: "POST",
         headers: {
@@ -34,7 +34,7 @@ export const obtenerHistorial = async () => {
     );
 
     const response = await fetch(
-      `${API_URL_LOCAL}/canje/historial.php`,
+      `${API_URL_LOCAL}/api/canje/historial.php`,
       {
         headers: {
           "Content-Type": "application/json",
@@ -64,7 +64,7 @@ export const obtenerCanjesAdmin = async () => {
       JSON.parse(localStorage.getItem("usuario"));
 
     const response = await fetch(
-      `${API_URL_LOCAL}/canje/listar.php`,
+      `${API_URL_LOCAL}/api/canje/listar.php`,
       {
         headers: {
           "usuario": JSON.stringify(usuario)
@@ -91,7 +91,7 @@ export const actualizarEstadoCanje = async (
             JSON.parse(localStorage.getItem("usuario"));
 
         const response = await fetch(
-            `${API_URL_LOCAL}/canje/actualizarEstado.php`,
+            `${API_URL_LOCAL}/api/canje/actualizarEstado.php`,
             {
                 method: "PUT",
 

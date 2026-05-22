@@ -4,7 +4,7 @@ export const loginUsuario = async (data) => {
   try {
 
     const response = await fetch(
-      `${API_URL_LOCAL}/usuario/login.php`,
+      `${API_URL_LOCAL}/api/usuario/login.php`,
       {
         method: "POST",
         headers: {
@@ -30,7 +30,7 @@ export const loginUsuario = async (data) => {
 export const registrarUsuario = async (data) => {
 
   const response = await fetch(
-    `${API_URL_LOCAL}/usuario/registrar.php`,
+    `${API_URL_LOCAL}/api/usuario/registrar.php`,
     {
       method: "POST",
       headers: {
@@ -47,7 +47,7 @@ export const obtenerPerfil = async () => {
   const usuario = JSON.parse(localStorage.getItem("usuario"));
 
   const response = await fetch(
-    `${API_URL_LOCAL}/usuario/perfil.php`,
+    `${API_URL_LOCAL}/api/usuario/perfil.php`,
     {
       headers: {
         "Content-Type": "application/json",
