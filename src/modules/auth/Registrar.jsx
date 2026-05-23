@@ -16,7 +16,8 @@ function Registrar() {
         apellidos: "",
         correo: "",
         password: "",
-        confirmar: ""
+        confirmar: "",
+        telefono: ""
     });
     const handleChange = (e) => {
 
@@ -58,6 +59,13 @@ function Registrar() {
             if (formData.tipo_documento === "passport") {
                 value = value.slice(0, 12);
             }
+        }
+        if (name === "telefono") {
+
+            value = value.replace(/\D/g, "");
+
+            value = value.slice(0, 9);
+
         }
 
         // Nombres y apellidos → solo letras y espacios
@@ -139,6 +147,10 @@ function Registrar() {
         if (formData.password.trim().length < 6) {
             nuevosErrores.password =
                 "Mínimo 6 caracteres";
+        }
+        if (!/^[0-9]{9}$/.test(formData.telefono)) {
+            nuevosErrores.telefono =
+                "Ingrese un número válido";
         }
 
         // Confirmación
@@ -270,13 +282,23 @@ function Registrar() {
                                 )}
                             </div>
 
-                            <div className="col-12 mb-3">
+                            <div className="col-md-6 mb-3">
                                 <label className="form-label">Correo electrónico</label>
                                 <input type="email" name="correo"
                                     className={`form-control ${errores.correo ? "is-invalid" : ""}`}
-                                    value={formData.correo} onChange={handleChange} />
+                                    value={formData.correo} onChange={handleChange}/>
                                 {errores.correo && (
                                     <div className="invalid-feedback">{errores.correo}</div>
+                                )}
+                            </div>
+                            <div className="col-md-6 mb-3">
+                                <label className="form-label">Teléfono</label>
+                                <input
+                                    type="tel" name="telefono" inputMode="numeric" placeholder="#"
+                                    maxLength={9} className={`form-control ${errores.telefono ? "is-invalid" : ""}`}
+                                    value={formData.telefono} onChange={handleChange}/>
+                                {errores.telefono && (
+                                    <div className="invalid-feedback">{errores.telefono}</div>
                                 )}
                             </div>
 

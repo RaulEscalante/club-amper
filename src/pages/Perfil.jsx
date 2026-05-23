@@ -1,6 +1,6 @@
 import MainLayout from "../layouts/MainLayout";
 import { useEffect, useState } from "react";
-import { obtenerPerfil } from "../services/usuarioService";
+import { obtenerPerfil, actualizarTelefono } from "../services/usuarioService";
 import { obtenerHistorial } from "../services/canjeService";
 import "../styles/perfil.css";
 
@@ -8,6 +8,11 @@ function Perfil() {
 
   const [usuario, setUsuario] = useState(null);
   const [historial, setHistorial] = useState([]);
+  const [editandoTelefono, setEditandoTelefono] =
+    useState(false);
+
+  const [telefono, setTelefono] =
+    useState("");
   const [paginaActual, setPaginaActual] = useState(1);
 
   const itemsPorPagina = 3;
@@ -23,6 +28,35 @@ function Perfil() {
 
     if (response?.success) {
       setUsuario(response.data);
+      setTelefono(response.data.telefono || "");
+    }
+  };
+
+  const guardarTelefono = async () => {
+
+    if (!/^[0-9]{9}$/.test(telefono)) {
+      alert("Número inválido");
+      return;
+    }
+
+    const response =
+      await actualizarTelefono(telefono);
+
+    if (response.success) {
+
+      setUsuario(prev => ({
+        ...prev,
+        telefono
+      }));
+
+      setEditandoTelefono(false);
+
+      alert("Teléfono actualizado");
+
+    } else {
+
+      alert(response.message);
+
     }
   };
 
@@ -119,6 +153,60 @@ function Perfil() {
                   {usuario.correo}
                 </span>
               </div>
+              <div className="info-item telefono-item">
+
+                <div className="telefono-header">
+
+                  <span className="info-label">
+                    TELÉFONO
+                  </span>
+
+                  <button className="btn-editar-telefono" onClick={() =>
+                    setEditandoTelefono(true)
+                  }>
+                    Editar
+                  </button>
+
+                </div>
+
+                {
+                  editandoTelefono ? (
+
+                    <div className="telefono-edit-box">
+
+                      <input
+                        type="text"
+                        value={telefono}
+                        maxLength={9}
+                        onChange={(e) => {
+
+                          const value =
+                            e.target.value.replace(/\D/g, "");
+
+                          setTelefono(value);
+
+                        }}
+                        className="telefono-input"
+                      />
+
+                      <button
+                        className="btn-guardar-telefono" onClick={guardarTelefono}
+                      >
+                        Guardar
+                      </button>
+
+                    </div>
+
+                  ) : (
+
+                    <span className="info-value">
+                      {usuario.telefono}
+                    </span>
+
+                  )
+                }
+
+              </div>
             </div>
           </div>
 
@@ -131,71 +219,84 @@ function Perfil() {
               ) : (
                 historialPaginado.map(canje => (
                   <div className="canje-item" key={canje.id}>
-                    <div>
+
+                    <div className="canje-left">
+
                       <strong>
                         Ticket #{canje.id}
                       </strong>
-                      <br />
-                      <strong>
+
+                      <strong className="producto-name">
                         {canje.nombre_producto}
                       </strong>
+
                       <p>
                         {canje.total_puntos} puntos
                       </p>
 
                     </div>
-                    <span>
-                      {canje.fecha}
-                    </span>
+
+                    <div className="canje-right">
+
+                      <span className={`estado-badge ${canje.estado?.toLowerCase()}`}>
+                        {canje.estado}
+                      </span>
+
+                      <span className="fecha-canje">
+                        {canje.fecha}
+                      </span>
+
+                    </div>
+
                   </div>
-                  
+
                 ))
               )}
               {
-  totalPaginas > 1 && (
-    <div className="paginacion">
+                totalPaginas > 1 && (
+                  <div className="paginacion">
 
-      <button
-        disabled={paginaActual === 1}
-        onClick={() =>
-          setPaginaActual(paginaActual - 1)
-        }
-      >
-        ←
-      </button>
+                    <button
+                      disabled={paginaActual === 1}
+                      onClick={() =>
+                        setPaginaActual(paginaActual - 1)
+                      }
+                    >
+                      ←
+                    </button>
 
-      {
-        [...Array(totalPaginas)].map((_, index) => (
+                    {
+                      [...Array(totalPaginas)].map((_, index) => (
 
-          <button
-            key={index}
-            className={
-              paginaActual === index + 1
-                ? "active"
-                : ""
-            }
-            onClick={() =>
-              setPaginaActual(index + 1)
-            }
-          >
-            {index + 1}
-          </button>
+                        <button
+                          key={index}
+                          className={
+                            paginaActual === index + 1
+                              ? "active"
+                              : ""
+                          }
+                          onClick={() =>
+                            setPaginaActual(index + 1)
+                          }
+                        >
+                          {index + 1}
+                        </button>
 
-        ))
-      }
+                      ))
+                    }
 
-      <button
-        disabled={paginaActual === totalPaginas}
-        onClick={() =>
-          setPaginaActual(paginaActual + 1)
-        }
-      >
-        →
-      </button>
+                    <button
+                      disabled={paginaActual === totalPaginas}
+                      onClick={() =>
+                        setPaginaActual(paginaActual + 1)
+                      }
+                    >
+                      →
+                    </button>
 
-    </div>
-  )
-}
+                  </div>
+                )
+              }
             </div>
 
           </div>

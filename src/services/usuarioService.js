@@ -58,3 +58,26 @@ export const obtenerPerfil = async () => {
 
   return await response.json();
 };
+export const actualizarTelefono = async (telefono) => {
+
+  const usuario =
+    JSON.parse(localStorage.getItem("usuario"));
+
+  const response = await fetch(
+    `${API_URL_LOCAL}/api/usuario/actualizarTelefono.php`,
+    {
+      method: "PUT",
+
+      headers: {
+        "Content-Type": "application/json",
+        "usuario": JSON.stringify(usuario)
+      },
+
+      body: JSON.stringify({
+        telefono
+      })
+    }
+  );
+
+  return await response.json();
+};

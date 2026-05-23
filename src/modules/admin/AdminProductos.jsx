@@ -9,6 +9,7 @@ import ProductoModal from "../../components/ProductoModal";
 function AdminProductos() {
 
   const [productos, setProductos] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   const [busqueda, setBusqueda] = useState("");
   const [paginaActual, setPaginaActual] =
@@ -20,21 +21,22 @@ function AdminProductos() {
   const [mostrarModal, setMostrarModal] =
     useState(false);
 
+  const cargarProductos = async () => {
+    setLoading(true);
+    const response = await obtenerProductos();
+
+    if (response?.success) {
+      setProductos(response.data);
+    }
+    setLoading(false);
+  };
+
   const [productoEditar, setProductoEditar] =
     useState(null);
 
   useEffect(() => {
     cargarProductos();
   }, []);
-
-  const cargarProductos = async () => {
-
-    const response = await obtenerProductos();
-
-    if (response?.success) {
-      setProductos(response.data);
-    }
-  };
 
   const productosFiltrados =
     productos.filter(producto => {
@@ -113,6 +115,16 @@ function AdminProductos() {
       );
     }
   };
+
+  if (loading) {
+    return (
+      <MainLayout>
+        <div className="loading">
+          Cargando productos...
+        </div>
+      </MainLayout>
+    );
+  }
 
   return (
     <MainLayout>

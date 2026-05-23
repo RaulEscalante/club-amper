@@ -13,19 +13,23 @@ function Productos() {
   const [mostrarModal, setMostrarModal] =
     useState(false);
   const [productoEditar, setProductoEditar] = useState(null);
+  const [loading, setLoading] = useState(false);
   const [productos, setProductos] = useState([]);
   const [paginaActual, setPaginaActual] = useState(1);
 
-  const productosPorPagina = 8;   
-  useEffect(() => {
-    cargarProductos();
-  }, []);
   const cargarProductos = async () => {
+    setLoading(true);
     const response = await obtenerProductos();
     if (response && response.success) {
       setProductos(response.data);
     }
+    setLoading(false);
   };
+  const productosPorPagina = 8;
+  useEffect(() => {
+    cargarProductos();
+  }, []);
+
 
   const navigate = useNavigate();
   const handleEditar = (producto) => {
@@ -51,8 +55,8 @@ function Productos() {
       indiceUltimo
     );
 
-  
- 
+
+
   const handleEliminar = async (id) => {
     const confirmar = await alertaConfirmacion(
       "¿Deseas desactivar este producto?"
@@ -105,6 +109,17 @@ function Productos() {
       alertaError("No esta registrado en el club o no tiene puntos suficientes");
     }
   };
+
+  if (loading) {
+
+    return (
+      <MainLayout>
+        <div className="loading">
+          Cargando canjes...
+        </div>
+      </MainLayout>
+    );
+  }
   return (
     <MainLayout>
       <div className="container mt-5 prodc">
@@ -209,52 +224,52 @@ function Productos() {
         </div>
 
         {
-  totalPaginas > 1 && (
+          totalPaginas > 1 && (
 
-    <div className="paginacion">
+            <div className="paginacion">
 
-      <button
-        disabled={paginaActual === 1}
-        onClick={() =>
-          setPaginaActual(paginaActual - 1)
+              <button
+                disabled={paginaActual === 1}
+                onClick={() =>
+                  setPaginaActual(paginaActual - 1)
+                }
+              >
+                ←
+              </button>
+
+              {
+                [...Array(totalPaginas)].map((_, index) => (
+
+                  <button
+                    key={index}
+                    className={
+                      paginaActual === index + 1
+                        ? "active"
+                        : ""
+                    }
+                    onClick={() =>
+                      setPaginaActual(index + 1)
+                    }
+                  >
+                    {index + 1}
+                  </button>
+
+                ))
+              }
+
+              <button
+                disabled={paginaActual === totalPaginas}
+                onClick={() =>
+                  setPaginaActual(paginaActual + 1)
+                }
+              >
+                →
+              </button>
+
+            </div>
+
+          )
         }
-      >
-        ←
-      </button>
-
-      {
-        [...Array(totalPaginas)].map((_, index) => (
-
-          <button
-            key={index}
-            className={
-              paginaActual === index + 1
-                ? "active"
-                : ""
-            }
-            onClick={() =>
-              setPaginaActual(index + 1)
-            }
-          >
-            {index + 1}
-          </button>
-
-        ))
-      }
-
-      <button
-        disabled={paginaActual === totalPaginas}
-        onClick={() =>
-          setPaginaActual(paginaActual + 1)
-        }
-      >
-        →
-      </button>
-
-    </div>
-
-  )
-}
       </div>
       {
         mostrarModal && (

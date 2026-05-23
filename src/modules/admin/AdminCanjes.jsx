@@ -9,6 +9,7 @@ function AdminCanjes() {
     const [canjes, setCanjes] = useState([]);
     const [editandoId, setEditandoId] = useState(null);
     const [nuevoEstado, setNuevoEstado] = useState("");
+    const [loading, setLoading] = useState(true);
 
     const [busqueda, setBusqueda] = useState("");
     const [paginaActual, setPaginaActual] =
@@ -21,12 +22,16 @@ function AdminCanjes() {
 
     const cargarCanjes = async () => {
 
+        setLoading(true);
+
         const response =
             await obtenerCanjesAdmin();
 
         if (response?.success) {
             setCanjes(response.data);
         }
+
+        setLoading(false);
     };
 
     const canjesFiltrados = canjes.filter(canje => {
@@ -90,6 +95,16 @@ function AdminCanjes() {
             );
         }
     };
+    if (loading) {
+
+        return (
+            <MainLayout>
+                <div className="loading">
+                    Cargando canjes...
+                </div>
+            </MainLayout>
+        );
+    }
     return (
         <MainLayout>
             <div className="admin-canjes-container">
@@ -129,6 +144,7 @@ function AdminCanjes() {
                             <tr>
                                 <th>#</th>
                                 <th>Cliente</th>
+                                <th>Telefono</th>
                                 <th>Producto</th>
                                 <th>Puntos</th>
                                 <th>Estado</th>
@@ -142,6 +158,7 @@ function AdminCanjes() {
                                 <tr key={c.id}>
                                     <td>Ticket N°{c.id}</td>
                                     <td>{c.nombres} {c.apellidos}</td>
+                                    <td>{c.telefono || "No registrado"}</td>
                                     <td>{c.nombre_producto}</td>
                                     <td>{c.total_puntos}</td>
                                     <td>

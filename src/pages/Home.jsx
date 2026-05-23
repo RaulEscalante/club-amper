@@ -1,13 +1,14 @@
 import { Link, useNavigate } from 'react-router-dom'
 import MainLayout from '../layouts/MainLayout'
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Autoplay } from 'swiper/modules';
+import { Navigation, Autoplay, Pagination } from 'swiper/modules';
 import { useEffect, useState } from 'react';
 import { useAuth } from "../context/AuthContext";
 import { obtenerProductos } from "../services/productosService";
 
 import 'swiper/css';
 import 'swiper/css/navigation';
+import "swiper/css/pagination";
 
 function Home() {
     const API_URL = "https://club-amper-api-production.up.railway.app";
@@ -157,24 +158,81 @@ function Home() {
                 </h2>
 
                 <Swiper
-                    modules={[Navigation]}
-                    navigation
+                    modules={[
+                        Navigation,
+                        Autoplay,
+                        Pagination
+                    ]}
+
                     loop={true}
+
+                    autoplay={{
+                        delay: 3000,
+                        disableOnInteraction: false,
+                    }}
+
+                    pagination={{
+                        clickable: true,
+                    }}
+
+                    navigation
+
+                    spaceBetween={20}
+
                     slidesPerView={4}
-                    slidesPerGroup={1}
-                    spaceBetween={25}
+
+                    breakpoints={{
+
+                        0: {
+                            slidesPerView: 1.1,
+                            spaceBetween: 15,
+                        },
+
+                        576: {
+                            slidesPerView: 1.5,
+                            spaceBetween: 18,
+                        },
+
+                        768: {
+                            slidesPerView: 2.2,
+                            spaceBetween: 20,
+                        },
+
+                        992: {
+                            slidesPerView: 3,
+                            spaceBetween: 22,
+                        },
+
+                        1200: {
+                            slidesPerView: 4,
+                            spaceBetween: 25,
+                        }
+
+                    }}
                 >
+
                     {beneficios.map(item => (
+
                         <SwiperSlide key={item.id}>
+
                             <div className="beneficio-card">
-                                <img src={item.icon} alt="" className='icon-ben' />
+
+                                <img
+                                    src={item.icon}
+                                    alt=""
+                                    className="icon-ben"
+                                />
 
                                 <p className="textop">
                                     {item.text}
                                 </p>
+
                             </div>
+
                         </SwiperSlide>
+
                     ))}
+
                 </Swiper>
             </section>
             {/* CATÁLOGO */}
@@ -186,16 +244,26 @@ function Home() {
                 <div className="row justify-content-center">
 
                     {productos.slice(0, 4).map(item => (
-                        <div className="col-md-4 col-lg-3 mb-4" key={item.id}>
+
+                        <div
+                            className="col-md-4 col-lg-3 mb-4"
+                            key={item.id}
+                        >
 
                             <div className="producto-card">
 
                                 <div className="producto-img-container">
+
                                     <img
-                                        src={item.imagen ? `${API_URL}/uploads/productos/${item.imagen}` : "/assets/no-image.png"}
+                                        src={
+                                            item.imagen
+                                                ? `${API_URL}/uploads/productos/${item.imagen}`
+                                                : "/assets/no-image.png"
+                                        }
                                         alt={item.nombre}
                                         className="producto-img"
                                     />
+
                                 </div>
 
                                 <div className="producto-info text-center">
@@ -215,12 +283,18 @@ function Home() {
                                     <button
                                         className="btn btn-canjear"
                                         onClick={() => {
+
                                             if (!usuario) {
-                                                alert("Debes iniciar sesión para canjear productos");
+
+                                                alert(
+                                                    "Debes iniciar sesión para canjear productos"
+                                                );
+
                                                 return;
                                             }
 
                                             alert("Canje exitoso");
+
                                         }}
                                     >
                                         Canjear Ahora
@@ -231,8 +305,20 @@ function Home() {
                             </div>
 
                         </div>
+
                     ))}
-                    <Link className="btn-ver-mas" to="/productos">Ver más</Link>
+
+                </div>
+
+                <div className="text-center mt-4">
+
+                    <Link
+                        className="btn-ver-mas"
+                        to="/productos"
+                    >
+                        Ver más
+                    </Link>
+
                 </div>
 
             </section>
