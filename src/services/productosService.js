@@ -66,16 +66,14 @@ export const editarProducto = async (producto) => {
             {
                 method: "POST",
                 headers: {
-                    "Content-Type": "application/json",
                     "usuario": JSON.stringify(usuario)
                 },
-                body: JSON.stringify(producto)
+                body: producto
             }
         );
-        const text = await response.text();
-console.log(text);
+        const data = await response.json();
 
-return JSON.parse(text);
+        return data;
 
     } catch (error) {
         console.error("Error al editar producto:", error);
