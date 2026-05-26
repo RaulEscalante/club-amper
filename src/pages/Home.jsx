@@ -49,7 +49,7 @@ function Home() {
         },
         {
             id: 5,
-            icon: "/assets/puntos.png",
+            icon: "/assets/acumula_puntos.png",
             text: "Acumulación de puntos"
         },
         {
@@ -59,12 +59,12 @@ function Home() {
         },
         {
             id: 7,
-            icon: "/assets/descuento.png",
+            icon: "/assets/promo.gif",
             text: "Promociones exclusivas"
         },
         {
             id: 8,
-            icon: "/assets/tarjeta.png",
+            icon: "/assets/tarjeta_digital.png",
             text: "Tarjeta digital"
         },
         {
