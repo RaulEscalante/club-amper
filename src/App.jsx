@@ -7,13 +7,14 @@ import AdminProductos from './modules/admin/AdminProductos'
 import AdminRoute from "./components/AdminRoute";
 import Perfil from './pages/Perfil'
 import AdminCanjes from './modules/admin/AdminCanjes'
+import VerificarCorreo from './pages/VerificarCorreo'
 
 function App() {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/productos" element={<Productos />} />
-      {/* Solo admin */}      
+      {/* Solo admin */}
       <Route
         path="/admin/productos"
         element={
@@ -33,6 +34,8 @@ function App() {
       <Route path="/login" element={<IniciarSesion />} />
       <Route path="/login/registrar" element={<Registrar />} />
       <Route path="/perfil" element={<Perfil />} />
+      <Route path="/verificar" element={<VerificarCorreo />}
+      />
     </Routes>
   )
 }
