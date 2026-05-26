@@ -57,6 +57,7 @@ function ProductoModal({ productoEditar, onClose, onSuccess }) {
     formDataToSend.append("marca", formData.marca);
     formDataToSend.append("puntos_requeridos", formData.puntos_requeridos);
     formDataToSend.append("stock", formData.stock);
+    formDataToSend.append("imagen_actual",formData.imagen);
     /*
     |--------------------------------------------------------------------------
     | IMAGEN
@@ -168,7 +169,7 @@ function ProductoModal({ productoEditar, onClose, onSuccess }) {
               ) : formData.imagen ? (
                 /* IMAGEN ACTUAL DEL PRODUCTO */
                 <img src={`https://club-amper-api-production.up.railway.app/uploads/productos/${formData.imagen}`}
-                  alt="producto" className="preview-img"/>
+                  alt="producto" className="preview-img" />
 
               ) : (
 
