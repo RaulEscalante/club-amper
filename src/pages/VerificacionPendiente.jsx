@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 function VerificacionPendiente() {
   return (
     <div className="verify-page">
