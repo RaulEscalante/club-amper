@@ -72,7 +72,6 @@
 
 .form-group input:focus {
   border-color: #bb1818;
-
   box-shadow:
     0 0 0 4px rgba(187,24,24,0.1);
 }
@@ -93,13 +92,9 @@
 .preview-img {
   width: 140px;
   height: 140px;
-
   object-fit: cover;
-
   border-radius: 16px;
-
   border: 2px solid #eee;
-
   box-shadow:
     0 10px 20px rgba(0,0,0,0.08);
 }
@@ -109,25 +104,17 @@
 .modal-actions {
   display: flex;
   gap: 12px;
-
   margin-top: 10px;
 }
 
-.btn-cancelar,
-.btn-guardar {
+.btn-cancelar,.btn-guardar {
   flex: 1;
-
   border: none;
-
   border-radius: 12px;
-
   padding: 13px;
-
   font-size: 14px;
   font-weight: 700;
-
   cursor: pointer;
-
   transition: 0.2s ease;
 }
 
