@@ -5,15 +5,19 @@ const AuthContext = createContext();
 export function AuthProvider({ children }) {
 
     const [usuario, setUsuario] = useState(null);
+    const [loading, setLoading] = useState(true);
 
     // recuperar sesión al cargar app
     useEffect(() => {
 
-        const userGuardado = localStorage.getItem("usuario");
+        const userGuardado =
+            localStorage.getItem("usuario");
 
         if (userGuardado) {
             setUsuario(JSON.parse(userGuardado));
         }
+
+        setLoading(false);
 
     }, []);
 
@@ -41,7 +45,8 @@ export function AuthProvider({ children }) {
             value={{
                 usuario,
                 login,
-                logout
+                logout,
+                loading
             }}
         >
             {children}
