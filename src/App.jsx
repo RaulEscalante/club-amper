@@ -8,36 +8,41 @@ import AdminRoute from "./components/AdminRoute";
 import Perfil from './pages/Perfil'
 import AdminCanjes from './modules/admin/AdminCanjes'
 import VerificarCorreo from './pages/VerificarCorreo'
+import VerificacionPendiente from
 
-function App() {
-  return (
-    <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/productos" element={<Productos />} />
-      {/* Solo admin */}
-      <Route
-        path="/admin/productos"
-        element={
-          <AdminRoute>
-            <AdminProductos />
-          </AdminRoute>
-        }
-      />
-      <Route
-        path="/admin/canjes"
-        element={
-          <AdminRoute>
-            <AdminCanjes />
-          </AdminRoute>
-        }
-      />
-      <Route path="/login" element={<IniciarSesion />} />
-      <Route path="/login/registrar" element={<Registrar />} />
-      <Route path="/perfil" element={<Perfil />} />
-      <Route path="/verificar" element={<VerificarCorreo />}
-      />
-    </Routes>
-  )
-}
+  function App() {
+    return (
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/productos" element={<Productos />} />
+        {/* Solo admin */}
+        <Route
+          path="/admin/productos"
+          element={
+            <AdminRoute>
+              <AdminProductos />
+            </AdminRoute>
+          }
+        />
+        <Route
+          path="/admin/canjes"
+          element={
+            <AdminRoute>
+              <AdminCanjes />
+            </AdminRoute>
+          }
+        />
+        <Route path="/login" element={<IniciarSesion />} />
+        <Route path="/login/registrar" element={<Registrar />} />
+        <Route path="/perfil" element={<Perfil />} />
+        <Route path="/verificar" element={<VerificarCorreo />}
+        />
+        <Route
+          path="/verificar-correo-info"
+          element={<VerificacionPendiente />}
+        />
+      </Routes>
+    )
+  }
 
 export default App

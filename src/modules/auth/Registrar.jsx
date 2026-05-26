@@ -178,7 +178,7 @@ function Registrar() {
 
         if (response?.success) {
             alertaExito("Usuario registrado correctamente");
-            navigate("/login");
+            navigate("/verificar-correo-info");
         } else {
 
             if (response?.message === "El correo ya está registrado") {
