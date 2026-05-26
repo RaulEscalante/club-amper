@@ -265,14 +265,49 @@
 
 @media (max-width: 900px) {
 
+  .custom-navbar {
+    padding: 8px 0;
+  }
+
   .navbar-container {
-    flex-direction: column;
-    gap: 0px;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 12px;
+  }
+
+  .logo-img {
+    height: 36px;
   }
 
   .navbar-links {
+    gap: 8px;
+
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: flex-end;
+  }
+
+  .nav-item-custom {
+    font-size: 13px;
+  }
+
+  .btn-login,
+  .btn-register,
+  .btn-logout,
+  .nav-admin {
+    padding: 6px 10px;
+    font-size: 12px;
+  }
+
+  .user-profile span {
+    display: none;
+  }
+
+  .user-avatar {
+    width: 32px;
+    height: 32px;
+    font-size: 13px;
   }
 
 }
