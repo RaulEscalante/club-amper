@@ -21,3 +21,4 @@ function VerificacionPendiente() {
     </div>
   );
 }
+export default VerificacionPendiente;
