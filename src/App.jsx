@@ -8,7 +8,7 @@ import AdminRoute from "./components/AdminRoute";
 import Perfil from './pages/Perfil'
 import AdminCanjes from './modules/admin/AdminCanjes'
 import VerificarCorreo from './pages/VerificarCorreo'
-import VerificacionPendiente from
+import VerificacionPendiente from './pages/VerificacionPendiente'
 
   function App() {
     return (
