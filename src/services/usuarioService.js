@@ -28,19 +28,37 @@ export const loginUsuario = async (data) => {
 
 };
 export const registrarUsuario = async (data) => {
+  try {
+    const response = await fetch(
+      `${API_URL_LOCAL}/api/usuario/registrar.php`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(data)
+      }
+    );
 
-  const response = await fetch(
-    `${API_URL_LOCAL}/api/usuario/registrar.php`,
-    {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(data)
+    const text = await response.text(); // 👈 primero texto
+
+    try {
+      return JSON.parse(text); // 👈 intenta JSON
+    } catch (e) {
+      console.error("Respuesta NO JSON del backend:", text);
+      return {
+        success: false,
+        message: "Error del servidor"
+      };
     }
-  );
 
-  return await response.json();
+  } catch (error) {
+    console.error("Error registrar:", error);
+    return {
+      success: false,
+      message: "Error de red"
+    };
+  }
 };
 export const obtenerPerfil = async () => {
 
