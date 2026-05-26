@@ -1,43 +1,23 @@
 .modal-overlay {
   position: fixed;
   inset: 0;
-
   background: rgba(0,0,0,0.55);
-
   display: flex;
   justify-content: center;
-  align-items: center;
-
+  align-items: flex-start;
+  padding-top: 90px;
   z-index: 999;
-
   backdrop-filter: blur(5px);
+  overflow-y: auto;
 }
 
 .modal-content {
   width: 520px;
-
   background: #fff;
-
   border-radius: 22px;
-
   padding: 28px;
-
-  box-shadow:
-    0 25px 60px rgba(0,0,0,0.25);
-
+  box-shadow: 0 25px 60px rgba(0,0,0,0.25);
   animation: modalFade 0.25s ease;
-}
-
-@keyframes modalFade {
-  from {
-    opacity: 0;
-    transform: translateY(25px) scale(.98);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
 }
 
 .modal-content h2 {
@@ -81,15 +61,12 @@
 
 .form-group input {
   border: 1px solid #ddd;
-
+   width: 100%;
+  box-sizing: border-box;
   border-radius: 12px;
-
   padding: 12px 14px;
-
   font-size: 14px;
-
   transition: 0.2s ease;
-
   outline: none;
 }
 
@@ -251,5 +228,16 @@
     grid-template-columns: 1fr;
   }
 
+}
+@keyframes modalFade {
+  from {
+    opacity: 0;
+    transform: translateY(25px) scale(.98);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
 }
 
