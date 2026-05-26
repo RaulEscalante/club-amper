@@ -14,7 +14,7 @@ function AdminCanjes() {
     const [busqueda, setBusqueda] = useState("");
     const [paginaActual, setPaginaActual] =
         useState(1);
-    const itemsPorPagina = 4;
+    const itemsPorPagina = 8;
 
     useEffect(() => {
         cargarCanjes();
