@@ -74,7 +74,7 @@ function VerificarCorreo() {
       <div className="verify-card">
 
         <img
-          src="/assets/amper_logo.png"
+          src="/assets/amper_logo_rojo.png"
           alt="Amper"
           className="verify-logo"
         />
