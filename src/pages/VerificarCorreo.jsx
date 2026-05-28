@@ -40,7 +40,7 @@ function VerificarCorreo() {
     try {
 
       const response = await fetch(
-        `https://club-amper-api-production.up.railway.app/api/auth/verificar.php?token=${token}`
+        `https://api.ampercompany.com.pe/api/auth/verificar.php?token=${token}`
       );
 
       const data =
