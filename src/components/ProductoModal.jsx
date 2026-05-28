@@ -168,7 +168,7 @@ function ProductoModal({ productoEditar, onClose, onSuccess }) {
                 />
               ) : formData.imagen ? (
                 /* IMAGEN ACTUAL DEL PRODUCTO */
-                <img src={`https://club-amper-api-production.up.railway.app/uploads/productos/${formData.imagen}`}
+                <img src={`https://api.ampercompany.com.pe/uploads/productos/${formData.imagen}`}
                   alt="producto" className="preview-img" />
 
               ) : (

@@ -8,7 +8,7 @@ import { alertaExito, alertaError, alertaConfirmacion } from "../../utils/alerts
 import ProductoModal from "../../components/ProductoModal";
 
 function Productos() {
-  const API_URL = "https://club-amper-api-production.up.railway.app";
+  const API_URL = "https://api.ampercompany.com.pe";
   const usuario = JSON.parse(localStorage.getItem("usuario"));
   const [mostrarModal, setMostrarModal] =
     useState(false);
