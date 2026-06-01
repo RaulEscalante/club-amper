@@ -99,3 +99,43 @@ export const actualizarTelefono = async (telefono) => {
 
   return await response.json();
 };
+
+export const forgotPassword = async (correo) => {
+
+  const response = await fetch(
+    `${API_URL}/api/auth/forgot-password.php`,
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        correo
+      })
+    }
+  );
+
+  return await response.json();
+};
+
+export const resetPassword = async (
+  token,
+  password
+) => {
+
+  const response = await fetch(
+    `${API_URL}/api/auth/reset-password.php`,
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        token,
+        password
+      })
+    }
+  );
+
+  return await response.json();
+};

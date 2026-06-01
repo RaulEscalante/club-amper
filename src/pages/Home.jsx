@@ -11,7 +11,7 @@ import 'swiper/css/navigation';
 import "swiper/css/pagination";
 
 function Home() {
-    const API_URL = "https://club-amper-api-production.up.railway.app";
+    const API_URL = "https://api.ampercompany.com.pe";
     const usuario = JSON.parse(localStorage.getItem("usuario"));
 
     const [productos, setProductos] = useState([]);
