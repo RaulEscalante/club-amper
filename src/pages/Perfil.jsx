@@ -128,7 +128,7 @@ function Perfil() {
             <div className="card points-card">
               <h3>Puntos acumulados</h3>
               <div className="points">
-                {usuario.puntos}
+                ⭐ {Number(usuario.puntos).toLocaleString()}
               </div>
               <p className="hint">
                 Usa tus puntos para canjear productos
@@ -206,6 +206,15 @@ function Perfil() {
                   )
                 }
 
+                <div className="info-item">
+                  <span className="info-label">
+                    CANJES
+                  </span>
+
+                  <span className="info-value">
+                    {historial.length}
+                  </span>
+                </div>
               </div>
             </div>
           </div>
