@@ -103,7 +103,7 @@ export const actualizarTelefono = async (telefono) => {
 export const forgotPassword = async (correo) => {
 
   const response = await fetch(
-    `${API_URL}/api/auth/forgot-password.php`,
+    `${API_URL_LOCAL}/api/auth/forgot-password.php`,
     {
       method: "POST",
       headers: {
@@ -124,7 +124,7 @@ export const resetPassword = async (
 ) => {
 
   const response = await fetch(
-    `${API_URL}/api/auth/reset-password.php`,
+    `${API_URL_LOCAL}/api/auth/reset-password.php`,
     {
       method: "POST",
       headers: {
