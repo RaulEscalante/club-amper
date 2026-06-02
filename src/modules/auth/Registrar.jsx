@@ -177,6 +177,10 @@ function Registrar() {
         setLoading(false);
 
         if (response?.success) {
+            localStorage.setItem(
+                "correoPendienteVerificacion",
+                formData.correo
+            );
             alertaExito("Usuario registrado correctamente");
             navigate("/verificar-correo-info");
         } else {
@@ -286,7 +290,7 @@ function Registrar() {
                                 <label className="form-label">Correo electrónico</label>
                                 <input type="email" name="correo"
                                     className={`form-control ${errores.correo ? "is-invalid" : ""}`}
-                                    value={formData.correo} onChange={handleChange}/>
+                                    value={formData.correo} onChange={handleChange} />
                                 {errores.correo && (
                                     <div className="invalid-feedback">{errores.correo}</div>
                                 )}
@@ -296,7 +300,7 @@ function Registrar() {
                                 <input
                                     type="tel" name="telefono" inputMode="numeric" placeholder="#"
                                     maxLength={9} className={`form-control ${errores.telefono ? "is-invalid" : ""}`}
-                                    value={formData.telefono} onChange={handleChange}/>
+                                    value={formData.telefono} onChange={handleChange} />
                                 {errores.telefono && (
                                     <div className="invalid-feedback">{errores.telefono}</div>
                                 )}

@@ -8,7 +8,11 @@ import {
 
 function VerificacionPendiente() {
 
-  const [correo, setCorreo] = useState("");
+  const [correo, setCorreo] = useState(
+    localStorage.getItem(
+      "correoPendienteVerificacion"
+    ) || ""
+  );
   const [loading, setLoading] = useState(false);
 
   const handleReenviar = async () => {
@@ -49,8 +53,10 @@ function VerificacionPendiente() {
         <h2>📩 Revisa tu correo</h2>
 
         <p>
-          Te enviamos un enlace para verificar tu cuenta.
+          Hemos enviado un correo a:
         </p>
+
+        <strong>{correo}</strong>
 
         <p>
           Si no lo ves, revisa spam o promociones.
