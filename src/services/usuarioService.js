@@ -139,3 +139,34 @@ export const resetPassword = async (
 
   return await response.json();
 };
+
+export const reenviarVerificacion = async (
+  correo
+) => {
+
+  try {
+
+    const response = await fetch(
+      `${API_URL_LOCAL}/api/auth/reenviar-verificacion.php`,
+      {
+        method: "POST",
+
+        headers: {
+          "Content-Type": "application/json"
+        },
+
+        body: JSON.stringify({
+          correo
+        })
+      }
+    );
+
+    return await response.json();
+
+  } catch (error) {
+
+    console.error(error);
+
+    return null;
+  }
+};
