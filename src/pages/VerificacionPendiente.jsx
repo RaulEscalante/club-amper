@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { reenviarVerificacion } from '../services/usuarioService';
 import { alertaExito, alertaError } from '../utils/alerts';
 import CambiarCorreoModal from '../modules/auth/CambiarCorreoModal';
@@ -13,8 +13,16 @@ function VerificacionPendiente() {
       ) || ""
     );
   const [loading, setLoading] = useState(false);
+  const [cooldown, setCooldown] = useState(0);
 
-  const [mostrarModal, setMostrarModal] =  useState(false);
+  const [mostrarModal, setMostrarModal] = useState(false);
+  useEffect(() => {
+    if (cooldown <= 0) return;
+    const timer = setInterval(() => {
+      setCooldown(prev => prev - 1);
+    }, 1000);
+    return () => clearInterval(timer);
+  }, [cooldown]);
 
   const handleReenviar = async () => {
     setLoading(true);
@@ -24,6 +32,7 @@ function VerificacionPendiente() {
       alertaExito(
         "Correo enviado nuevamente"
       );
+      setCooldown(60);
     } else {
 
       alertaError(
@@ -47,11 +56,15 @@ function VerificacionPendiente() {
           Si no lo ves, revisa spam o promociones.
         </p>
         <hr />
-        <button className="btn btn-primary w-100 mb-3" onClick={handleReenviar} disabled={loading}>
+        <button
+          className="btn btn-primary w-100 mb-3" onClick={handleReenviar} disabled={loading || cooldown > 0}
+        >
           {
             loading
               ? "Enviando..."
-              : "Reenviar correo"
+              : cooldown > 0
+                ? `Reenviar en ${cooldown}s`
+                : "Reenviar correo"
           }
         </button>
 
@@ -78,9 +91,13 @@ function VerificacionPendiente() {
             onClose={() =>
               setMostrarModal(false)
             }
-            onSuccess={(nuevoCorreo) =>
-              setCorreo(nuevoCorreo)
-            }
+            onSuccess={(nuevoCorreo) => {
+              setCorreo(nuevoCorreo);
+              localStorage.setItem(
+                "correoPendienteVerificacion",
+                nuevoCorreo
+              );
+            }}
           />
         )
       }
