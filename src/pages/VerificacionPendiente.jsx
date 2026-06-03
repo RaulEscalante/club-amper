@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import { reenviarVerificacion } from '../services/usuarioService';
 import { alertaExito, alertaError } from '../utils/alerts';
-import { CambiarCorreoModal } from '../modules/auth/CambiarCorreoModal';
+import CambiarCorreoModal from '../modules/auth/CambiarCorreoModal';
 
 function VerificacionPendiente() {
 
