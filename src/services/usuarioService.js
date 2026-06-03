@@ -170,3 +170,35 @@ export const reenviarVerificacion = async (
     return null;
   }
 };
+export const cambiarCorreoVerificacion = async (
+  correo_actual,
+  correo_nuevo
+) => {
+
+  try {
+
+    const response = await fetch(
+      `${API_URL_LOCAL}/api/auth/cambiar-correo-verificacion.php`,
+      {
+        method: "POST",
+
+        headers: {
+          "Content-Type": "application/json"
+        },
+
+        body: JSON.stringify({
+          correo_actual,
+          correo_nuevo
+        })
+      }
+    );
+
+    return await response.json();
+
+  } catch (error) {
+
+    console.error(error);
+
+    return null;
+  }
+};
