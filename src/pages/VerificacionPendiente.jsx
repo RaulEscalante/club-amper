@@ -6,36 +6,24 @@ import { CambiarCorreoModal } from '../modules/auth/CambiarCorreoModal';
 
 function VerificacionPendiente() {
 
-  const correo =
-    localStorage.getItem(
-      "correoPendienteVerificacion"
-    ) || "";
-  const [loading, setLoading] = useState(false);
-
-  const [mostrarModal, setMostrarModal] =
-    useState(false);
-
   const [correo, setCorreo] =
     useState(
       localStorage.getItem(
         "correoPendienteVerificacion"
       ) || ""
     );
+  const [loading, setLoading] = useState(false);
+
+  const [mostrarModal, setMostrarModal] =  useState(false);
 
   const handleReenviar = async () => {
-
     setLoading(true);
-    const response =
-      await reenviarVerificacion(correo);
-
+    const response = await reenviarVerificacion(correo);
     setLoading(false);
-
     if (response?.success) {
-
       alertaExito(
         "Correo enviado nuevamente"
       );
-
     } else {
 
       alertaError(
