@@ -4,7 +4,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { obtenerProductos, eliminarProducto, reactivarProducto } from "../../services/productosService";
 import '../../styles/productos.css'
 import { canjearProducto } from "../../services/canjeService";
-import { alertaExito, alertaError, alertaConfirmacion } from "../../utils/alerts";
+import { alertaExito, alertaError, alertaConfirmacion, alertaRegistroClub } from "../../utils/alerts";
 import ProductoModal from "../../components/ProductoModal";
 
 function Productos() {
