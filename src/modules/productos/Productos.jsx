@@ -106,7 +106,10 @@ function Productos() {
         "_blank"
       );
     } else {
-      alertaError("No esta registrado en el club o no tiene puntos suficientes");
+      alertaError(
+        response?.message ||
+        "Error al realizar el canje"
+      );
     }
   };
 
