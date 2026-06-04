@@ -31,3 +31,20 @@ export const alertaConfirmacion = async (mensaje) => {
     cancelButtonText: "Cancelar"
   });
 };
+
+import Swal from "sweetalert2";
+
+export const alertaRegistroClub = async () => {
+
+  return await Swal.fire({
+    icon: "warning",
+    title: "No estás registrado",
+    text: "Para realizar canjes debes registrarte en el Club de Beneficios.",
+    showCancelButton: true,
+    confirmButtonColor: "#bb1818",
+    cancelButtonColor: "#6c757d",
+    confirmButtonText: "Registrarme",
+    cancelButtonText: "Cancelar"
+  });
+
+};

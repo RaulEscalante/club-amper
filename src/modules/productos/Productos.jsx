@@ -106,10 +106,27 @@ function Productos() {
         "_blank"
       );
     } else {
+      if (
+        response?.message === "Usuario no encontrado"
+      ) {
+
+        const result =
+          await alertaRegistroClub();
+
+        if (result.isConfirmed) {
+
+          navigate("/registrar");
+
+        }
+
+        return;
+      }
+
       alertaError(
         response?.message ||
         "Error al realizar el canje"
       );
+
     }
   };
 
