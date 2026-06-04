@@ -32,8 +32,6 @@ export const alertaConfirmacion = async (mensaje) => {
   });
 };
 
-import Swal from "sweetalert2";
-
 export const alertaRegistroClub = async () => {
 
   return await Swal.fire({
