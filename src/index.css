@@ -549,3 +549,18 @@ section {
 .swiper-button-prev {
   color: #bb1818 !important;
 }
+.footer-social{
+  display:flex;
+  gap:15px;
+  margin-top:15px;
+}
+
+.footer-social a{
+  color:white;
+  font-size:1.4rem;
+  transition:.3s;
+}
+
+.footer-social a:hover{
+  color:#bb1818;
+}

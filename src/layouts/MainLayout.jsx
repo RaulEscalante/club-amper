@@ -5,6 +5,10 @@ function MainLayout({ children }) {
   const usuario = JSON.parse(localStorage.getItem("usuario"));
   return (
     <>
+      <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+      />
       <Navbar />
       {children}
       <footer className="footer-club">
@@ -25,6 +29,34 @@ function MainLayout({ children }) {
                 Club Amper recompensa tus compras con
                 beneficios, promociones y premios exclusivos.
               </p>
+
+              <div className="footer-social">
+
+                <a
+                  href="https://www.facebook.com/share/1AkAQyQXFk/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <i className="bi bi-facebook"></i>
+                </a>
+
+                <a
+                  href="https://www.instagram.com/amper.peru?igsh=MXQ2eHV2M2R3ajA2dA=="
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <i className="bi bi-instagram"></i>
+                </a>
+
+                <a
+                  href="https://www.tiktok.com/@amper_importadora?_r=1&_t=ZS-96liSJO6PFU"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <i className="bi bi-tiktok"></i>
+                </a>
+
+              </div>
 
             </div>
 
