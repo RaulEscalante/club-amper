@@ -25,7 +25,7 @@ function MainLayout({ children }) {
                 Club Amper recompensa tus compras con
                 beneficios, promociones y premios exclusivos.
               </p>
-              <h3>Síguenos en redes sociales</h3>
+              <h4>Visita nuestras redes sociales</h4>
               <div className="footer-social">
 
                 <a href="https://www.facebook.com/share/1AkAQyQXFk/" target="_blank" rel="noopener noreferrer">
