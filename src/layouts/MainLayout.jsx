@@ -19,40 +19,24 @@ function MainLayout({ children }) {
 
             <div className="footer-brand">
 
-              <img
-                src="/assets/amper_logo_blanco.png"
-                alt="Amper"
-                className="footer-logo"
-              />
+              <img src="/assets/amper_logo_blanco.png" alt="Amper" className="footer-logo"/>
 
               <p>
                 Club Amper recompensa tus compras con
                 beneficios, promociones y premios exclusivos.
               </p>
-
+              <h3>Síguenos en redes sociales</h3>
               <div className="footer-social">
 
-                <a
-                  href="https://www.facebook.com/share/1AkAQyQXFk/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
+                <a href="https://www.facebook.com/share/1AkAQyQXFk/" target="_blank" rel="noopener noreferrer">
                   <i className="bi bi-facebook"></i>
                 </a>
 
-                <a
-                  href="https://www.instagram.com/amper.peru?igsh=MXQ2eHV2M2R3ajA2dA=="
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
+                <a href="https://www.instagram.com/amper.peru?igsh=MXQ2eHV2M2R3ajA2dA==" target="_blank" rel="noopener noreferrer">
                   <i className="bi bi-instagram"></i>
                 </a>
 
-                <a
-                  href="https://www.tiktok.com/@amper_importadora?_r=1&_t=ZS-96liSJO6PFU"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
+                <a href="https://www.tiktok.com/@amper_importadora?_r=1&_t=ZS-96liSJO6PFU" target="_blank" rel="noopener noreferrer">
                   <i className="bi bi-tiktok"></i>
                 </a>
 
@@ -61,12 +45,9 @@ function MainLayout({ children }) {
             </div>
 
             <div className="footer-links">
-
               <h5>Explorar</h5>
-
               <a href="/">Inicio</a>
               <h5>Cuenta</h5>
-
               {usuario ? (
                 <>
                   <a href="/perfil">Mi perfil</a>
