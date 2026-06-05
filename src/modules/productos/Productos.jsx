@@ -10,8 +10,7 @@ import ProductoModal from "../../components/ProductoModal";
 function Productos() {
   const API_URL = "https://api.ampercompany.com.pe";
   const usuario = JSON.parse(localStorage.getItem("usuario"));
-  const [mostrarModal, setMostrarModal] =
-    useState(false);
+  const [mostrarModal, setMostrarModal] = useState(false);
   const [productoEditar, setProductoEditar] = useState(null);
   const [loading, setLoading] = useState(false);
   const [productos, setProductos] = useState([]);
@@ -30,7 +29,6 @@ function Productos() {
     cargarProductos();
   }, []);
 
-
   const navigate = useNavigate();
   const handleEditar = (producto) => {
     navigate("/productos/agregar", {
@@ -38,24 +36,11 @@ function Productos() {
     });
   };
 
-  const productosActivos = productos.filter(
-    p => p.estado == 1
-  );
-  const totalPaginas = Math.ceil(
-    productosActivos.length / productosPorPagina
-  );
+  const productosActivos = productos.filter(p => p.estado == 1);
+  const totalPaginas = Math.ceil(productosActivos.length / productosPorPagina);
   const indiceUltimo = paginaActual * productosPorPagina;
-
-  const indicePrimero =
-    indiceUltimo - productosPorPagina;
-
-  const productosPaginados =
-    productosActivos.slice(
-      indicePrimero,
-      indiceUltimo
-    );
-
-
+  const indicePrimero = indiceUltimo - productosPorPagina;
+  const productosPaginados = productosActivos.slice(indicePrimero, indiceUltimo);
 
   const handleEliminar = async (id) => {
     const confirmar = await alertaConfirmacion(
@@ -88,6 +73,19 @@ function Productos() {
     }
   };
   const handleCanjear = async (producto) => {
+    const usuario = JSON.parse(
+      localStorage.getItem("usuario")
+    );
+
+    if (!usuario) { 
+       const result = await alertaRegistroClub();     
+
+      if (result.isConfirmed) {
+        navigate("/login/registrar");
+      }
+
+      return;
+    }
     const data = {
       productos: [
         {
@@ -115,7 +113,7 @@ function Productos() {
 
         if (result.isConfirmed) {
 
-          navigate("/registrar");
+          navigate("/login/registrar");
 
         }
 
