@@ -5,6 +5,8 @@ import { Navigation, Autoplay, Pagination } from 'swiper/modules';
 import { useEffect, useState } from 'react';
 import { useAuth } from "../context/AuthContext";
 import { obtenerProductos } from "../services/productosService";
+import { canjearProducto } from "../services/canjeService";
+import { alertaExito, alertaError, alertaRegistroClub } from "../utils/alerts";
 
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -13,6 +15,7 @@ import "swiper/css/pagination";
 function Home() {
     const API_URL = "https://api.ampercompany.com.pe";
     const usuario = JSON.parse(localStorage.getItem("usuario"));
+    const navigate = useNavigate();
 
     const [productos, setProductos] = useState([]);
     useEffect(() => {
@@ -73,6 +76,63 @@ function Home() {
             text: "Capacitaciones técnicas"
         }
     ];
+
+    const handleCanjear = async (producto) => {
+
+        const usuario =
+            JSON.parse(
+                localStorage.getItem("usuario")
+            );
+
+        if (!usuario) {
+
+            const result =
+                await alertaRegistroClub();
+
+            if (result.isConfirmed) {
+
+                navigate("/login/registrar");
+
+            }
+
+            return;
+        }
+
+        const data = {
+            productos: [
+                {
+                    producto_id: producto.id,
+                    cantidad: 1
+                }
+            ]
+        };
+
+        const response =
+            await canjearProducto(data);
+
+        if (response?.success) {
+
+            alertaExito(
+                "Canje realizado correctamente"
+            );
+
+            cargarProductos();
+
+            window.open(
+                response.data.whatsapp_url,
+                "_blank"
+            );
+
+        } else {
+
+            alertaError(
+                response?.message ||
+                "Error al realizar el canje"
+            );
+
+        }
+    };
+
     return (
         <MainLayout>
             {/* HERO */}
@@ -282,20 +342,7 @@ function Home() {
 
                                     <button
                                         className="btn btn-canjear"
-                                        onClick={() => {
-
-                                            if (!usuario) {
-
-                                                alert(
-                                                    "Debes iniciar sesión para canjear productos"
-                                                );
-
-                                                return;
-                                            }
-
-                                            alert("Canje exitoso");
-
-                                        }}
+                                        onClick={() => handleCanjear(item)}
                                     >
                                         Canjear Ahora
                                     </button>
