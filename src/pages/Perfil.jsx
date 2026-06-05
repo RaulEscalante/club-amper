@@ -2,6 +2,7 @@ import MainLayout from "../layouts/MainLayout";
 import { useEffect, useState } from "react";
 import { obtenerPerfil, actualizarTelefono } from "../services/usuarioService";
 import { obtenerHistorial } from "../services/canjeService";
+import { alertaExito, alertaError, alertaConfirmacion } from '../utils/alerts';
 import "../styles/perfil.css";
 
 function Perfil() {
@@ -35,7 +36,7 @@ function Perfil() {
   const guardarTelefono = async () => {
 
     if (!/^[0-9]{9}$/.test(telefono)) {
-      alert("Número inválido");
+      alertaError("Número inválido");
       return;
     }
 
@@ -51,11 +52,17 @@ function Perfil() {
 
       setEditandoTelefono(false);
 
-      alert("Teléfono actualizado");
+      alertaConfirmacion(
+        "¿Deseas actualizar tu número de teléfono?"
+      ).then(result => {
+        if (result.isConfirmed) {
+          alertaExito("Número actualizado");
+        }
+      });
 
     } else {
 
-      alert(response.message);
+      alertaError(response.message);
 
     }
   };
