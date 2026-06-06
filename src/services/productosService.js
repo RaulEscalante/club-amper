@@ -1,14 +1,11 @@
-const API_URL = "http://192.168.1.88/club-amper-api/backend/api";
 const API_URL_LOCAL = "https://api.ampercompany.com.pe";
 
 export const obtenerProductos = async () => {
 
     try {
-
         const usuario = JSON.parse(
             localStorage.getItem("usuario")
         );
-
         const response = await fetch(
             `${API_URL_LOCAL}/api/producto/listar.php`,
             {
@@ -18,28 +15,19 @@ export const obtenerProductos = async () => {
                 }
             }
         );
-
         const data = await response.json();
-
         return data;
-
     } catch (error) {
-
         console.error(
             "Error obteniendo productos:",
             error
         );
-
         return [];
-
     }
-
 };
-
 export const crearProducto = async (producto) => {
     try {
         const usuario = JSON.parse(localStorage.getItem("usuario"));
-
         const response = await fetch(`${API_URL_LOCAL}/api/producto/crear.php`, {
             method: "POST",
             headers: {
@@ -50,7 +38,6 @@ export const crearProducto = async (producto) => {
         );
         const data = await response.json();
         return data;
-
     } catch (error) {
         console.error("Error al crear producto:", error);
         return null;
