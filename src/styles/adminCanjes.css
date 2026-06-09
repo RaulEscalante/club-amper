@@ -198,35 +198,6 @@
   transform: scale(0.98);
 }
 
-/* =========================
-   RESPONSIVE
-========================= */
-
-@media (max-width: 992px) {
-
-  .table-container {
-    overflow-x: auto;
-  }
-
-  .canjes-table {
-    min-width: 900px;
-  }
-
-}
-
-@media (max-width: 768px) {
-
-  .admin-header-canjes {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 15px;
-  }
-
-  .admin-header-canjes h2 {
-    font-size: 26px;
-  }
-
-}
 .busqueda-container {
   margin-bottom: 25px;
 }
@@ -234,30 +205,42 @@
 .input-busqueda {
   width: 100%;
   max-width: 400px;
-
   height: 52px;
-
   padding: 0 18px;
-
   border-radius: 16px;
-
   border: 1px solid #e5e5e5;
-
   background: white;
-
   font-size: 14px;
-
   transition: 0.25s ease;
-
-  box-shadow:
-    0 4px 15px rgba(0,0,0,0.04);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.04);
 }
 
-.input-busqueda:focus {
+.input-busqueda:focus {  
   outline: none;
-
   border-color: #bb1818;
+  box-shadow: 0 0 0 4px rgba(187,24,24,0.10);
+}
 
-  box-shadow:
-    0 0 0 4px rgba(187,24,24,0.10);
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 992px) {
+  .table-container {
+    overflow-x: auto;
+  }
+  .canjes-table {
+    min-width: 900px;
+  }
+}
+
+@media (max-width: 768px) {
+  .admin-header-canjes {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+  .admin-header-canjes h2 {
+    font-size: 26px;
+  }
 }
