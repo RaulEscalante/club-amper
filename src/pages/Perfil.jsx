@@ -217,7 +217,7 @@ function Perfil() {
                 </div>
 
               </div>
-              <div className="info-item telefono-item">
+              <div className="info-item ">
 
                 <div className="telefono-header">
 
