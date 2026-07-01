@@ -311,6 +311,46 @@
   color:#721c24;
 }
 
+/* ==========================
+ACCIONES PERFIL
+========================== */
+
+.info-item {
+  position: relative;
+}
+
+.info-action {
+  margin-top: 8px;
+}
+
+.btn-perfil-action {
+  background: transparent;
+  border: 1px solid #bb1818;
+  color: #bb1818;
+  border-radius: 10px;
+  padding: 8px 14px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: .2s;
+}
+
+.btn-perfil-action:hover {
+  background: #bb1818;
+  color: white;
+}
+
+.password-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.password-placeholder {
+  color: #888;
+  font-size: 14px;
+}
+
 /* RESPONSIVE */
 @media (max-width: 768px) {
 

@@ -175,31 +175,46 @@ function Perfil() {
                   {usuario.correo}
                 </span>
 
-                <button
-                  className="btn-editar-telefono"
-                  onClick={() =>
-                    setMostrarModalCorreo(true)
-                  }
-                >
-                  Cambiar correo
-                </button>
+                <div className="info-action">
+                  <button
+                    className="btn-perfil-action"
+                    onClick={() =>
+                      setMostrarModalCorreo(true)
+                    }
+                  >
+                    Cambiar correo
+                  </button>
+
+                </div>
 
               </div>
 
               <div className="info-item">
 
-                <span className="info-label">
-                  SEGURIDAD
+                <div className="password-row">
+
+                  <span className="info-label">
+                    SEGURIDAD
+                  </span>
+
+                </div>
+
+                <span className="password-placeholder">
+                  ••••••••••
                 </span>
 
-                <button
-                  className="btn-editar-telefono"
-                  onClick={() =>
-                    setMostrarModalPassword(true)
-                  }
-                >
-                  Cambiar contraseña
-                </button>
+                <div className="info-action">
+
+                  <button
+                    className="btn-perfil-action"
+                    onClick={() =>
+                      setMostrarModalPassword(true)
+                    }
+                  >
+                    Cambiar contraseña
+                  </button>
+
+                </div>
 
               </div>
               <div className="info-item telefono-item">
