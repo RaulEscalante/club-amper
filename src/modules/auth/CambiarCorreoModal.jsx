@@ -1,88 +1,235 @@
 import { useState } from "react";
-import { cambiarCorreoVerificacion } from "../../services/usuarioService";
-import { alertaExito, alertaError } from "../../utils/alerts";
+
+import {
+    cambiarCorreoVerificacion,
+    cambiarPassword
+}
+from "../../services/usuarioService";
+
+import {
+    alertaExito,
+    alertaError
+}
+from "../../utils/alerts";
 
 function CambiarCorreoModal({
+
+    tipo = "correo",
+
     correoActual,
+
     onClose,
+
     onSuccess
+
 }) {
 
-    const [correoNuevo, setCorreoNuevo] =
+    const [correoNuevo,
+        setCorreoNuevo] =
         useState("");
 
-    const [loading, setLoading] =
+    const [passwordActual,
+        setPasswordActual] =
+        useState("");
+
+    const [passwordNueva,
+        setPasswordNueva] =
+        useState("");
+
+    const [loading,
+        setLoading] =
         useState(false);
 
-    const handleGuardar = async () => {
+    const handleGuardar =
+        async () => {
 
-        if (!correoNuevo.trim()) {
+            setLoading(true);
 
-            alertaError(
-                "Ingresa un correo válido"
-            );
+            let response;
 
-            return;
-        }
+            /*
+            |-------------------------
+            | CAMBIAR CORREO
+            |-------------------------
+            */
 
-        setLoading(true);
+            if (
+                tipo === "correo"
+            ) {
 
-        const response =
-            await cambiarCorreoVerificacion(
-                correoActual,
-                correoNuevo
-            );
+                if (
+                    !correoNuevo.trim()
+                ) {
 
-        setLoading(false);
+                    alertaError(
+                        "Ingresa un correo válido"
+                    );
 
-        if (response?.success) {
+                    setLoading(false);
 
-            localStorage.setItem(
-                "correoPendienteVerificacion",
-                correoNuevo
-            );
+                    return;
+                }
 
-            alertaExito(
-                "Correo actualizado correctamente"
-            );
+                response =
+                    await cambiarCorreoVerificacion(
+                        correoActual,
+                        correoNuevo
+                    );
 
-            onSuccess(correoNuevo);
+            }
 
-            onClose();
+            /*
+            |-------------------------
+            | CAMBIAR PASSWORD
+            |-------------------------
+            */
 
-        } else {
+            if (
+                tipo === "password"
+            ) {
 
-            alertaError(
-                response?.message ||
-                "No se pudo actualizar el correo"
-            );
+                if (
+                    !passwordActual ||
+                    !passwordNueva
+                ) {
 
-        }
-    };
+                    alertaError(
+                        "Completa todos los campos"
+                    );
+
+                    setLoading(false);
+
+                    return;
+                }
+
+                response =
+                    await cambiarPassword({
+                        password_actual:
+                            passwordActual,
+
+                        password_nueva:
+                            passwordNueva
+                    });
+
+            }
+
+            setLoading(false);
+
+            if (
+                response?.success
+            ) {
+
+                if (
+                    tipo === "correo"
+                ) {
+
+                    localStorage.setItem(
+                        "correoPendienteVerificacion",
+                        correoNuevo
+                    );
+
+                    onSuccess?.(
+                        correoNuevo
+                    );
+
+                }
+
+                alertaExito(
+                    response.message
+                );
+
+                onClose();
+
+            } else {
+
+                alertaError(
+                    response?.message ||
+                    "Error"
+                );
+
+            }
+
+        };
 
     return (
+
         <div className="modal-overlay">
 
             <div className="modal-content">
 
-                <h3>Cambiar correo</h3>
+                <h3>
 
-                <p>
-                    Ingresa el correo correcto para
-                    recibir el enlace de verificación.
-                </p>
-
-                <input
-                    type="email"
-                    className="form-control mb-3"
-                    placeholder="Nuevo correo"
-                    value={correoNuevo}
-                    onChange={(e) =>
-                        setCorreoNuevo(
-                            e.target.value
-                        )
+                    {
+                        tipo === "correo"
+                            ? "Cambiar correo"
+                            : "Cambiar contraseña"
                     }
-                />
+
+                </h3>
+
+                {
+
+                    tipo === "correo" && (
+
+                        <>
+                            <p>
+
+                                Ingresa el nuevo correo.
+
+                            </p>
+
+                            <input
+                                type="email"
+                                className="form-control mb-3"
+                                placeholder="Nuevo correo"
+                                value={correoNuevo}
+                                onChange={(e)=>
+                                    setCorreoNuevo(
+                                        e.target.value
+                                    )
+                                }
+                            />
+                        </>
+
+                    )
+
+                }
+
+                {
+
+                    tipo === "password" && (
+
+                        <>
+
+                            <input
+                                type="password"
+                                className="form-control mb-3"
+                                placeholder="Contraseña actual"
+                                value={passwordActual}
+                                onChange={(e)=>
+                                    setPasswordActual(
+                                        e.target.value
+                                    )
+                                }
+                            />
+
+                            <input
+                                type="password"
+                                className="form-control mb-3"
+                                placeholder="Nueva contraseña"
+                                value={passwordNueva}
+                                onChange={(e)=>
+                                    setPasswordNueva(
+                                        e.target.value
+                                    )
+                                }
+                            />
+
+                        </>
+
+                    )
+
+                }
 
                 <div className="d-flex gap-2">
 
@@ -98,11 +245,13 @@ function CambiarCorreoModal({
                         onClick={handleGuardar}
                         disabled={loading}
                     >
+
                         {
                             loading
                                 ? "Guardando..."
                                 : "Guardar"
                         }
+
                     </button>
 
                 </div>
@@ -110,7 +259,9 @@ function CambiarCorreoModal({
             </div>
 
         </div>
+
     );
+
 }
 
 export default CambiarCorreoModal;

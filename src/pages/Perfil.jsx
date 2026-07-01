@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { obtenerPerfil, actualizarTelefono } from "../services/usuarioService";
 import { obtenerHistorial } from "../services/canjeService";
 import { alertaExito, alertaError, alertaConfirmacion } from '../utils/alerts';
+import { CambiarCorreoModal } from "../modules/auth/CambiarCorreoModal";
 import "../styles/perfil.css";
 
 function Perfil() {
@@ -22,6 +23,18 @@ function Perfil() {
     cargarPerfil();
     cargarHistorial();
   }, []);
+
+  const [
+    mostrarModalCorreo,
+    setMostrarModalCorreo
+  ] =
+    useState(false);
+
+  const [
+    mostrarModalPassword,
+    setMostrarModalPassword
+  ] =
+    useState(false);
 
   const cargarPerfil = async () => {
 
@@ -153,12 +166,41 @@ function Perfil() {
                 </span>
               </div>
               <div className="info-item">
+
                 <span className="info-label">
                   CORREO
                 </span>
+
                 <span className="info-value">
                   {usuario.correo}
                 </span>
+
+                <button
+                  className="btn-editar-telefono"
+                  onClick={() =>
+                    setMostrarModalCorreo(true)
+                  }
+                >
+                  Cambiar correo
+                </button>
+
+              </div>
+
+              <div className="info-item">
+
+                <span className="info-label">
+                  SEGURIDAD
+                </span>
+
+                <button
+                  className="btn-editar-telefono"
+                  onClick={() =>
+                    setMostrarModalPassword(true)
+                  }
+                >
+                  Cambiar contraseña
+                </button>
+
               </div>
               <div className="info-item telefono-item">
 
@@ -334,6 +376,51 @@ function Perfil() {
         </div>
 
       </div>
+
+      {
+        mostrarModalCorreo && (
+
+          <CambiarCorreoModal
+
+            tipo="correo"
+
+            correoActual={
+              usuario.correo
+            }
+
+            onClose={() =>
+              setMostrarModalCorreo(false)
+            }
+
+            onSuccess={(correo) => {
+
+              setUsuario(prev => ({
+                ...prev,
+                correo
+              }));
+
+            }}
+
+          />
+
+        )
+      }
+
+      {
+        mostrarModalPassword && (
+
+          <CambiarCorreoModal
+
+            tipo="password"
+
+            onClose={() =>
+              setMostrarModalPassword(false)
+            }
+
+          />
+
+        )
+      }
 
     </MainLayout>
   );
