@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { obtenerPerfil, actualizarTelefono } from "../services/usuarioService";
 import { obtenerHistorial } from "../services/canjeService";
 import { alertaExito, alertaError, alertaConfirmacion } from '../utils/alerts';
-import { CambiarCorreoModal } from "../modules/auth/CambiarCorreoModal";
+import CambiarCorreoModal from "../modules/auth/CambiarCorreoModal";
 import "../styles/perfil.css";
 
 function Perfil() {
