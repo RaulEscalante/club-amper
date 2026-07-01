@@ -224,13 +224,13 @@ function Perfil() {
                   <span className="info-label">
                     TELÉFONO
                   </span>
-
-                  <button className="btn-editar-telefono" onClick={() =>
-                    setEditandoTelefono(true)
-                  }>
-                    Editar
-                  </button>
-
+                  <div className="info-action">
+                    <button className="btn-perfil-action" onClick={() =>
+                      setEditandoTelefono(true)
+                    }>
+                      Editar
+                    </button>
+                  </div>
                 </div>
 
                 {
