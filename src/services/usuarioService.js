@@ -208,8 +208,12 @@ export const cambiarPassword = async (
 
   try {
 
-    const token =
-      localStorage.getItem("token");
+    const usuario =
+      JSON.parse(
+        localStorage.getItem(
+          "usuario"
+        )
+      );
 
     const response =
       await fetch(
@@ -223,13 +227,17 @@ export const cambiarPassword = async (
             "Content-Type":
               "application/json",
 
-            Authorization:
-              `Bearer ${token}`
+            "usuario":
+              JSON.stringify(
+                usuario
+              )
 
           },
 
           body:
-            JSON.stringify(data)
+            JSON.stringify(
+              data
+            )
 
         }
       );
