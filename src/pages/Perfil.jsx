@@ -219,56 +219,67 @@ function Perfil() {
               </div>
               <div className="info-item ">
 
-                <div className="telefono-header">
+                <div className="info-item">
 
                   <span className="info-label">
                     TELÉFONO
                   </span>
-                  <div className="info-action">
-                    <button className="btn-perfil-action" onClick={() =>
-                      setEditandoTelefono(true)
-                    }>
-                      Editar
-                    </button>
-                  </div>
+
+                  {
+                    editandoTelefono ? (
+
+                      <div className="telefono-edit-box">
+
+                        <input
+                          type="text"
+                          value={telefono}
+                          maxLength={9}
+                          onChange={(e) => {
+
+                            const value =
+                              e.target.value.replace(/\D/g, "");
+
+                            setTelefono(value);
+
+                          }}
+                          className="telefono-input"
+                        />
+
+                        <button
+                          className="btn-guardar-telefono"
+                          onClick={guardarTelefono}
+                        >
+                          Guardar
+                        </button>
+
+                      </div>
+
+                    ) : (
+
+                      <>
+                        <span className="info-value">
+                          {usuario.telefono}
+                        </span>
+
+                        <div className="info-action">
+
+                          <button
+                            className="btn-perfil-action"
+                            onClick={() =>
+                              setEditandoTelefono(true)
+                            }
+                          >
+                            Cambiar teléfono
+                          </button>
+
+                        </div>
+
+                      </>
+
+                    )
+                  }
+
                 </div>
-
-                {
-                  editandoTelefono ? (
-
-                    <div className="telefono-edit-box">
-
-                      <input
-                        type="text"
-                        value={telefono}
-                        maxLength={9}
-                        onChange={(e) => {
-
-                          const value =
-                            e.target.value.replace(/\D/g, "");
-
-                          setTelefono(value);
-
-                        }}
-                        className="telefono-input"
-                      />
-
-                      <button
-                        className="btn-guardar-telefono" onClick={guardarTelefono}
-                      >
-                        Guardar
-                      </button>
-
-                    </div>
-
-                  ) : (
-
-                    <span className="info-value">
-                      {usuario.telefono}
-                    </span>
-
-                  )
-                }
 
                 <div className="info-item">
                   <span className="info-label">
