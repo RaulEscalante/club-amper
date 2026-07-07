@@ -253,3 +253,16 @@ export const cambiarPassword = async (
   }
 
 };
+export const cambiarCorreoPerfil = async (correo) => {
+  try {
+    const usuario = JSON.parse(localStorage.getItem("usuario"));
+    const response = await fetch(`${API_URL_LOCAL}/api/usuario/cambiar-correo.php`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json", "usuario": JSON.stringify(usuario) },
+      body: JSON.stringify({ correo })
+    });
+    return await response.json();
+  } catch (error) {
+    console.error(error); return null;
+  }
+};

@@ -2,7 +2,8 @@ import { useState } from "react";
 
 import {
     cambiarCorreoVerificacion,
-    cambiarPassword
+    cambiarPassword,
+    cambiarCorreoPerfil
 }
 from "../../services/usuarioService";
 
@@ -56,59 +57,30 @@ function CambiarCorreoModal({
             if (
                 tipo === "correo"
             ) {
-
                 if (
                     !correoNuevo.trim()
                 ) {
-
-                    alertaError(
-                        "Ingresa un correo válido"
-                    );
-
+                    alertaError("Ingresa un correo válido");
                     setLoading(false);
-
                     return;
                 }
-
-                response =
-                    await cambiarCorreoVerificacion(
-                        correoActual,
-                        correoNuevo
-                    );
-
+                response = await cambiarCorreoPerfil(correoNuevo);
             }
-
             /*
             |-------------------------
             | CAMBIAR PASSWORD
             |-------------------------
             */
-
-            if (
-                tipo === "password"
-            ) {
-
-                if (
-                    !passwordActual ||
-                    !passwordNueva
-                ) {
-
-                    alertaError(
-                        "Completa todos los campos"
-                    );
-
+            if (tipo === "password") {
+                if (!passwordActual || !passwordNueva) {
+                    alertaError("Completa todos los campos");
                     setLoading(false);
-
                     return;
                 }
 
-                response =
-                    await cambiarPassword({
-                        password_actual:
-                            passwordActual,
-
-                        password_nueva:
-                            passwordNueva
+                response = await cambiarPassword({
+                        password_actual: passwordActual,
+                        password_nueva: passwordNueva
                     });
 
             }
